@@ -1,0 +1,38 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+* {
+  font-family: "Roboto Mono", monospace;
+}
+
+body {
+  color: #1e293b;
+  background-color: #f8fafc;
+  transition: color 400ms ease-in-out;
+  transition: background-color 400ms ease-in-out;
+}
+
+section {
+  padding: 2rem 0;
+}
+
+.dark {
+  color: #f8fafc;
+  background-color: #1e293b;
+}
+
+.theme-btn {
+  cursor: pointer;
+}
+
+.container {
+  max-width: 600px;
+}
+
+.section-header {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+}
