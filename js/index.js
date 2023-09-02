@@ -1,14 +1,4 @@
 const themeBtn = document.querySelector(".theme-btn");
-// const themes = [
-//   {
-//     name: "light",
-//     icon: "☀️",
-//   },
-//   {
-//     name: "dark",
-//     icon: "🌙",
-//   },
-// ];
 
 function setTheme(theme) {
   if (theme === "dark") {
