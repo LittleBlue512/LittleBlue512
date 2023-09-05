@@ -1,43 +1,9 @@
-:root {
-  --text-color: black;
-  --background-color: white;
+img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
 }
 
-::-webkit-scrollbar {
-  display: none;
-}
-
-* {
-  font-family: "Roboto Mono", monospace;
-}
-
-body {
-  margin: 0 auto;
-  padding: 1rem;
-  max-width: 600px;
-  color: var(--text-color);
-  transition: color 400ms ease-in-out;
-  transition: background-color 400ms ease-in-out;
-  background-color: var(--background-color);
-}
-
-header {
-  display: flex;
-  user-select: none;
-  justify-content: space-between;
-}
-
-header .nav-item {
-  color: inherit;
-  cursor: pointer;
-  margin-right: 1rem;
-  text-decoration: none;
-}
-
-header .nav-item.active {
-  border-bottom: 1px solid;
-}
-
-.theme-btn {
-  cursor: pointer;
+.center {
+  text-align: center;
 }
