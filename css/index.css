@@ -1,7 +1,63 @@
+:root {
+    --b-link: #0ea5e9;
+}
+
+header {
+    margin: 40px 0 60px 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    list-style-type: none;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    margin-right: 20px;
+}
+
+hgroup {
+    margin-bottom: 20px;
+}
+
+hgroup h1 {
+    margin: 0;
+}
+
+hgroup h2 {
+    margin: 0;
+}
+
+hgroup h3 {
+    margin: 0;
+}
+
+hgroup h2:nth-child(2) {
+    color: gray;
+    font-size: 1.2rem;
+    font-weight: normal;
+}
+
+hgroup h3:nth-child(2) {
+    color: gray;
+    font-size: 1rem;
+    font-weight: normal;
+}
+
 img {
     height: auto;
     border-radius: 4px;
 }
+
+footer {
+    margin: 60px 0 40px 0;
+}
+
 
 .center {
     text-align: center;
