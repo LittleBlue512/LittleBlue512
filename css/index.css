@@ -50,7 +50,10 @@ hgroup h3:nth-child(2) {
 }
 
 img {
-    height: auto;
+    border-radius: 4px;
+}
+
+iframe {
     border-radius: 4px;
 }
 
