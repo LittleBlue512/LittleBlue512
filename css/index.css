@@ -53,6 +53,10 @@ img {
     border-radius: 4px;
 }
 
+video {
+    border-radius: 4px;
+}
+
 iframe {
     border-radius: 4px;
 }
@@ -60,7 +64,6 @@ iframe {
 footer {
     margin: 60px 0 40px 0;
 }
-
 
 .center {
     text-align: center;
