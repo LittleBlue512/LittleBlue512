@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Chattipoom</h1>
 <h3 align="center">A passionate programmer from Thailand.</h3>
 
-- 🐳 More about me at [https://binarywanderer.me](https://binarywanderer.me)
+- 🐳 More about me at [binarywanderer.me](https://binarywanderer.me)
 
 <h3 align="left">Languages and Tools:</h3>
 <p align="left">
