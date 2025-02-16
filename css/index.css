@@ -1,6 +1,6 @@
 :root {
     --b-link: #0ea5e9;
-    --b-font-main: 'Rubik', sans-serif;
+    --b-font-main: 'Noto Sans', sans-serif;
 }
 
 header {
@@ -48,6 +48,15 @@ hgroup h3:nth-child(2) {
     color: gray;
     font-size: 1rem;
     font-weight: normal;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Noto Serif', Arial, sans-serif;
 }
 
 img {
