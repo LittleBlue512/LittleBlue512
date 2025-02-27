@@ -1,6 +1,23 @@
-:root {
-    --b-link: #0ea5e9;
-    --b-font-main: 'Noto Sans', sans-serif;
+@font-face {
+    font-family: 'Noto Sans';
+    font-style: normal;
+    src: url(/assets/fonts/NotoSans-Regular.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Noto Serif';
+    font-style: normal;
+    src: url(/assets/fonts/NotoSerif-Regular.ttf) format('truetype');
+}
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+    max-width: 600px;
+}
+
+figure {
+    margin-left: 0;
+    margin-right: 0;
 }
 
 header {
@@ -73,6 +90,7 @@ iframe {
 
 footer {
     margin: 40px 0 40px 0;
+    border-top: none;
 }
 
 .center {
