@@ -5,8 +5,8 @@ More about me at [binarywanderer.me](https://binarywanderer.me).
 
 ### Technologies
 
--   CSS3
--   HTML5
+-   CSS
+-   HTML
 -   JavaScript
 -   TypeScript
 -   Node.js
