@@ -1,0 +1,1666 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Office Reset — Circuit Timer</title>
+    <style>
+      :root {
+        --space-1: 4px;
+        --space-2: 8px;
+        --space-3: 12px;
+        --space-4: 16px;
+        --space-5: 24px;
+        --space-6: 32px;
+        --space-7: 48px;
+
+        --radius-sm: 8px;
+        --radius-md: 14px;
+        --radius-lg: 22px;
+        --radius-pill: 999px;
+
+        --fs-xs: 0.75rem;
+        --fs-sm: 0.875rem;
+        --fs-md: 1rem;
+        --fs-lg: 1.25rem;
+        --fs-xl: 1.5rem;
+        --fs-hero: 3rem;
+        --fs-hero-sm: 2.25rem;
+
+        --max-width: 480px;
+        --ring-size: 220px;
+        --ring-size-sm: 172px;
+        --stroke: 10px;
+
+        --dur-fast: 120ms;
+        --dur-med: 220ms;
+        --ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+        color-scheme: light;
+        --bg: oklch(96% 0.008 250);
+        --bg-elevated: oklch(99% 0.003 250);
+        --bg-sunken: oklch(92% 0.01 250);
+        --text: oklch(22% 0.02 250);
+        --text-secondary: oklch(38% 0.02 250);
+        --border: oklch(84% 0.012 250);
+        --border-strong: oklch(70% 0.02 250);
+
+        --accent: oklch(42% 0.15 254);
+        --accent-contrast: oklch(99% 0 0);
+        --accent-soft: oklch(90% 0.04 254);
+
+        --work-color: oklch(40% 0.14 254);
+        --work-soft: oklch(90% 0.05 254);
+        --rest-color: oklch(38% 0.1 152);
+        --rest-soft: oklch(90% 0.05 152);
+
+        --ring-track: oklch(88% 0.01 250);
+
+        --warn: oklch(40% 0.15 45);
+        --warn-soft: oklch(92% 0.08 45);
+        --warn-contrast: oklch(99% 0 0);
+
+        --focus-ring: oklch(42% 0.15 254);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          color-scheme: dark;
+          --bg: oklch(19% 0.014 250);
+          --bg-elevated: oklch(25% 0.016 250);
+          --bg-sunken: oklch(15% 0.012 250);
+          --text: oklch(96% 0.008 250);
+          --text-secondary: oklch(80% 0.02 250);
+          --border: oklch(36% 0.02 250);
+          --border-strong: oklch(50% 0.02 250);
+
+          --accent: oklch(78% 0.13 254);
+          --accent-contrast: oklch(15% 0.02 254);
+          --accent-soft: oklch(32% 0.06 254);
+
+          --work-color: oklch(80% 0.12 254);
+          --work-soft: oklch(30% 0.06 254);
+          --rest-color: oklch(80% 0.13 152);
+          --rest-soft: oklch(28% 0.06 152);
+
+          --ring-track: oklch(33% 0.015 250);
+
+          --warn: oklch(78% 0.15 45);
+          --warn-soft: oklch(32% 0.08 45);
+          --warn-contrast: oklch(15% 0.02 45);
+
+          --focus-ring: oklch(80% 0.13 254);
+        }
+      }
+
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --bg: oklch(96% 0.008 250);
+        --bg-elevated: oklch(99% 0.003 250);
+        --bg-sunken: oklch(92% 0.01 250);
+        --text: oklch(22% 0.02 250);
+        --text-secondary: oklch(38% 0.02 250);
+        --border: oklch(84% 0.012 250);
+        --border-strong: oklch(70% 0.02 250);
+        --accent: oklch(42% 0.15 254);
+        --accent-contrast: oklch(99% 0 0);
+        --accent-soft: oklch(90% 0.04 254);
+        --work-color: oklch(40% 0.14 254);
+        --work-soft: oklch(90% 0.05 254);
+        --rest-color: oklch(38% 0.1 152);
+        --rest-soft: oklch(90% 0.05 152);
+        --ring-track: oklch(88% 0.01 250);
+        --warn: oklch(40% 0.15 45);
+        --warn-soft: oklch(92% 0.08 45);
+        --warn-contrast: oklch(99% 0 0);
+        --focus-ring: oklch(42% 0.15 254);
+      }
+
+      :root[data-theme="dark"] {
+        color-scheme: dark;
+        --bg: oklch(19% 0.014 250);
+        --bg-elevated: oklch(25% 0.016 250);
+        --bg-sunken: oklch(15% 0.012 250);
+        --text: oklch(96% 0.008 250);
+        --text-secondary: oklch(80% 0.02 250);
+        --border: oklch(36% 0.02 250);
+        --border-strong: oklch(50% 0.02 250);
+        --accent: oklch(78% 0.13 254);
+        --accent-contrast: oklch(15% 0.02 254);
+        --accent-soft: oklch(32% 0.06 254);
+        --work-color: oklch(80% 0.12 254);
+        --work-soft: oklch(30% 0.06 254);
+        --rest-color: oklch(80% 0.13 152);
+        --rest-soft: oklch(28% 0.06 152);
+        --ring-track: oklch(33% 0.015 250);
+        --warn: oklch(78% 0.15 45);
+        --warn-soft: oklch(32% 0.08 45);
+        --warn-contrast: oklch(15% 0.02 45);
+        --focus-ring: oklch(80% 0.13 254);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+          Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+      }
+
+      .app {
+        width: 100%;
+        max-width: var(--max-width);
+        padding: var(--space-5) var(--space-4) var(--space-7);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-5);
+      }
+
+      header.top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: var(--space-3);
+      }
+      .brand h1 {
+        font-size: var(--fs-lg);
+        margin: 0;
+      }
+      .brand p {
+        margin: 2px 0 0;
+        font-size: var(--fs-xs);
+        color: var(--text-secondary);
+      }
+      .top-actions {
+        display: flex;
+        gap: var(--space-2);
+      }
+
+      button {
+        font: inherit;
+        color: inherit;
+      }
+
+      .icon-btn {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius-pill);
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      .icon-btn::after {
+        content: "";
+        position: absolute;
+        inset: -4px;
+      }
+      .icon-btn svg {
+        width: 20px;
+        height: 20px;
+        stroke: var(--text);
+        fill: none;
+      }
+      .icon-btn[aria-pressed="true"] {
+        background: var(--accent-soft);
+        border-color: var(--accent);
+      }
+
+      :focus-visible {
+        outline: 3px solid var(--focus-ring);
+        outline-offset: 2px;
+        border-radius: var(--radius-sm);
+      }
+
+      .mode-group {
+        display: flex;
+        gap: var(--space-2);
+        background: var(--bg-sunken);
+        padding: var(--space-1);
+        border-radius: var(--radius-md);
+      }
+      .mode-btn {
+        flex: 1;
+        min-height: 44px;
+        border: none;
+        border-radius: var(--radius-sm);
+        background: transparent;
+        font-weight: 600;
+        font-size: var(--fs-md);
+        cursor: pointer;
+        padding: var(--space-2) var(--space-3);
+      }
+      .mode-btn[aria-pressed="true"] {
+        background: var(--bg-elevated);
+        color: var(--accent);
+        box-shadow: 0 1px 2px oklch(0% 0 0 / 0.12);
+      }
+      .mode-btn:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+      }
+
+      .idle-summary {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: var(--fs-sm);
+        min-height: 1.2em;
+      }
+
+      .stage {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-5) var(--space-4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space-3);
+      }
+
+      .phase-pill {
+        font-size: var(--fs-xs);
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        padding: var(--space-1) var(--space-3);
+        border-radius: var(--radius-pill);
+        background: var(--bg-sunken);
+        color: var(--text-secondary);
+      }
+      .phase-pill[data-phase="work"] {
+        background: var(--work-soft);
+        color: var(--work-color);
+      }
+      .phase-pill[data-phase="rest"] {
+        background: var(--rest-soft);
+        color: var(--rest-color);
+      }
+      .phase-pill[data-phase="complete"] {
+        background: var(--warn-soft);
+        color: var(--warn);
+      }
+
+      .ring-wrap {
+        position: relative;
+        width: var(--ring-size);
+        height: var(--ring-size);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .ring-wrap svg {
+        width: 100%;
+        height: 100%;
+        transform: rotate(-90deg);
+      }
+      .ring-track {
+        stroke: var(--ring-track);
+        fill: none;
+      }
+      .ring-fill {
+        stroke: var(--accent);
+        fill: none;
+        stroke-linecap: round;
+        transition: stroke-dashoffset var(--dur-fast) linear;
+      }
+      .ring-fill[data-phase="rest"] {
+        stroke: var(--rest-color);
+      }
+      .ring-fill[data-phase="work"] {
+        stroke: var(--work-color);
+      }
+
+      .ring-center {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-1);
+        text-align: center;
+        padding: 0 var(--space-3);
+      }
+      .timer-readout {
+        font-size: var(--fs-hero);
+        font-weight: 700;
+        font-variant-numeric: tabular-nums;
+        line-height: 1;
+      }
+      .exercise-name {
+        font-size: var(--fs-lg);
+        font-weight: 700;
+        margin: var(--space-2) 0 0;
+        text-align: center;
+      }
+      .exercise-cue {
+        font-size: var(--fs-sm);
+        color: var(--text-secondary);
+        text-align: center;
+        max-width: 42ch;
+        margin: 0;
+      }
+      .next-up {
+        font-size: var(--fs-xs);
+        color: var(--text-secondary);
+        text-align: center;
+      }
+      .next-up strong {
+        color: var(--text);
+      }
+
+      .complete-panel {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+      }
+      .complete-panel h2 {
+        margin: 0;
+        font-size: var(--fs-lg);
+      }
+      .complete-panel p {
+        margin: 0;
+        color: var(--text-secondary);
+        font-size: var(--fs-sm);
+      }
+
+      .strip {
+        display: flex;
+        gap: 3px;
+        width: 100%;
+      }
+      .seg {
+        position: relative;
+        height: 8px;
+        border-radius: var(--radius-pill);
+        background: var(--bg-sunken);
+        overflow: hidden;
+      }
+      .seg-fill {
+        position: absolute;
+        inset: 0;
+        background: var(--accent);
+        transform: scaleX(0);
+        transform-origin: left center;
+      }
+      .seg[data-type="work"] .seg-fill {
+        background: var(--work-color);
+      }
+      .seg[data-type="rest"] .seg-fill {
+        background: var(--rest-color);
+      }
+
+      .controls {
+        display: flex;
+        gap: var(--space-2);
+      }
+      .btn {
+        flex: 1;
+        min-height: 48px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        font-weight: 600;
+        font-size: var(--fs-md);
+        cursor: pointer;
+      }
+      .btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .btn.primary {
+        background: var(--accent);
+        color: var(--accent-contrast);
+        border-color: var(--accent);
+        flex: 1.4;
+      }
+      .btn.primary:disabled {
+        opacity: 0.45;
+      }
+
+      section.card {
+        background: var(--bg-elevated);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: var(--space-4);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+      }
+      .card h2 {
+        font-size: var(--fs-sm);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--text-secondary);
+        margin: 0;
+      }
+      .reminder-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-3);
+      }
+      .switch-label {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        cursor: pointer;
+        min-height: 44px;
+      }
+      .switch {
+        position: relative;
+        width: 48px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+      .switch input {
+        position: absolute;
+        opacity: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        cursor: pointer;
+      }
+      .switch .track {
+        position: absolute;
+        inset: 0;
+        background: var(--bg-sunken);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-pill);
+        transition: background var(--dur-fast) var(--ease);
+      }
+      .switch .knob {
+        position: absolute;
+        top: 2px;
+        left: 2px;
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        background: var(--bg-elevated);
+        box-shadow: 0 1px 2px oklch(0% 0 0 / 0.3);
+        transition: transform var(--dur-fast) var(--ease);
+      }
+      .switch input:checked + .track {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+      .switch input:checked + .track + .knob {
+        transform: translateX(20px);
+      }
+      .switch input:focus-visible + .track {
+        outline: 3px solid var(--focus-ring);
+        outline-offset: 2px;
+      }
+
+      select {
+        font: inherit;
+        min-height: 44px;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--border);
+        background: var(--bg-elevated);
+        color: var(--text);
+      }
+      .reminder-next {
+        font-size: var(--fs-sm);
+        color: var(--text-secondary);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .banner {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        background: var(--warn-soft);
+        border: 1px solid var(--warn);
+        color: var(--text);
+        border-radius: var(--radius-lg);
+        padding: var(--space-4);
+      }
+      .banner[hidden] {
+        display: none;
+      }
+      .banner p {
+        margin: 0;
+        font-weight: 600;
+      }
+      .banner-actions {
+        display: flex;
+        gap: var(--space-2);
+        flex-wrap: wrap;
+      }
+      .banner-actions button {
+        min-height: 44px;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-sm);
+        border: 1px solid var(--warn);
+        background: var(--bg-elevated);
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .banner-actions button.primary {
+        background: var(--warn);
+        color: var(--warn-contrast);
+      }
+
+      .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      @media (max-width: 420px) {
+        .app {
+          padding: var(--space-4) var(--space-3) var(--space-6);
+          gap: var(--space-4);
+        }
+        .stage {
+          padding: var(--space-4) var(--space-3);
+        }
+        :root {
+          --ring-size: var(--ring-size-sm);
+        }
+        .timer-readout {
+          font-size: var(--fs-hero-sm);
+        }
+        .exercise-cue {
+          max-width: 32ch;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <svg style="display: none" aria-hidden="true">
+      <symbol
+        id="icon-neck"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="6" r="3"></circle>
+        <path d="M9.5 8.5c-1 2-1.5 4-2.5 6-.8 1.6-1.5 3-2 5.5"></path>
+        <path d="M14.5 8.5c1 2 1.5 4 2.5 6 .8 1.6 1.5 3 2 5.5"></path>
+      </symbol>
+      <symbol
+        id="icon-shoulder"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="12" cy="7" r="2.4"></circle>
+        <path d="M3 16c1.5-4.5 5.5-7 9-7s7.5 2.5 9 7"></path>
+        <path d="M5 20c1-2.5 2-4 3-5"></path>
+        <path d="M19 20c-1-2.5-2-4-3-5"></path>
+      </symbol>
+      <symbol
+        id="icon-spine"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 3c-2 2-2 3 0 5s2 3 0 5 -2 3 0 5 2 3 0 5"></path>
+        <circle
+          cx="12"
+          cy="3.4"
+          r="0.9"
+          fill="currentColor"
+          stroke="none"
+        ></circle>
+        <circle
+          cx="12"
+          cy="8.2"
+          r="0.9"
+          fill="currentColor"
+          stroke="none"
+        ></circle>
+        <circle
+          cx="12"
+          cy="13"
+          r="0.9"
+          fill="currentColor"
+          stroke="none"
+        ></circle>
+        <circle
+          cx="12"
+          cy="17.8"
+          r="0.9"
+          fill="currentColor"
+          stroke="none"
+        ></circle>
+      </symbol>
+      <symbol
+        id="icon-hip"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <circle cx="8" cy="14" r="3.2"></circle>
+        <circle cx="16" cy="14" r="3.2"></circle>
+        <path d="M8 10.8V6h8v4.8"></path>
+      </symbol>
+      <symbol
+        id="icon-wrist"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M8 21v-6.5a2 2 0 0 1 2-2h0"></path>
+        <path d="M8 12.5V6a1.6 1.6 0 0 1 3.2 0v6"></path>
+        <path d="M11.2 12V5a1.6 1.6 0 0 1 3.2 0v7.5"></path>
+        <path
+          d="M14.4 12.5v-5a1.6 1.6 0 0 1 3.2 0v8c0 3.5-1.6 5.5-3.6 5.5H12"
+        ></path>
+      </symbol>
+      <symbol
+        id="icon-chest"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M3.5 16c2.8-6.5 6.6-6.5 8.5-6.5S17.7 9.5 20.5 16"></path>
+        <path d="M12 9.5V16"></path>
+      </symbol>
+      <symbol
+        id="icon-eye"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M2.5 12S6.5 6 12 6s9.5 6 9.5 6-4 6-9.5 6-9.5-6-9.5-6z"></path>
+        <circle cx="12" cy="12" r="2.6"></circle>
+      </symbol>
+      <symbol
+        id="icon-core"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.6"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <rect x="6" y="5" width="12" height="14" rx="2.5"></rect>
+        <path d="M12 5v14"></path>
+        <path d="M6 10.5h12"></path>
+        <path d="M6 14.5h12"></path>
+      </symbol>
+      <symbol
+        id="icon-sun"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.8"
+        fill="none"
+        stroke-linecap="round"
+      >
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <path
+          d="M12 2.5v2.4M12 19.1v2.4M4.4 4.4l1.7 1.7M17.9 17.9l1.7 1.7M2.5 12h2.4M19.1 12h2.4M4.4 19.6l1.7-1.7M17.9 6.1l1.7-1.7"
+        ></path>
+      </symbol>
+      <symbol
+        id="icon-moon"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.8"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"></path>
+      </symbol>
+      <symbol
+        id="icon-mute-on"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.8"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M4 10v4h4l5 4V6l-5 4H4z"></path>
+      </symbol>
+      <symbol
+        id="icon-mute-off"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="1.8"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M4 10v4h4l5 4V6l-5 4H4z"></path>
+        <path d="M15.5 9.5l4 5M19.5 9.5l-4 5"></path>
+      </symbol>
+    </svg>
+
+    <div class="app">
+      <header class="top">
+        <div class="brand">
+          <h1>Office Reset</h1>
+          <p>No-equipment mobility circuit</p>
+        </div>
+        <div class="top-actions">
+          <button
+            id="muteBtn"
+            class="icon-btn"
+            type="button"
+            aria-pressed="false"
+            aria-label="Mute sound"
+            title="Mute sound"
+          >
+            <svg aria-hidden="true">
+              <use id="muteIconUse" href="#icon-mute-on"></use>
+            </svg>
+          </button>
+          <button
+            id="themeBtn"
+            class="icon-btn"
+            type="button"
+            aria-label="Toggle light/dark theme"
+            title="Toggle theme"
+          >
+            <svg aria-hidden="true">
+              <use id="themeIconUse" href="#icon-moon"></use>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <div class="mode-group" role="group" aria-label="Circuit mode">
+        <button
+          id="modeDeskBtn"
+          class="mode-btn"
+          type="button"
+          aria-pressed="true"
+        >
+          Desk
+        </button>
+        <button
+          id="modeFloorBtn"
+          class="mode-btn"
+          type="button"
+          aria-pressed="false"
+        >
+          Floor
+        </button>
+      </div>
+
+      <p class="idle-summary" id="idleSummary" aria-live="polite"></p>
+
+      <section class="stage" aria-live="polite">
+        <span class="phase-pill" id="phasePill" data-phase="idle">Ready</span>
+
+        <div class="ring-wrap">
+          <svg viewBox="0 0 160 160">
+            <circle
+              class="ring-track"
+              cx="80"
+              cy="80"
+              r="70"
+              stroke-width="10"
+            ></circle>
+            <circle
+              class="ring-fill"
+              id="ringFill"
+              data-phase="idle"
+              cx="80"
+              cy="80"
+              r="70"
+              stroke-width="10"
+              stroke-dasharray="439.8"
+              stroke-dashoffset="439.8"
+            ></circle>
+          </svg>
+          <div class="ring-center">
+            <span class="timer-readout" id="timerReadout" style="display: none"
+              >00:00</span
+            >
+          </div>
+        </div>
+
+        <h2 class="exercise-name" id="exerciseName">
+          Pick a mode and press Start
+        </h2>
+        <p class="exercise-cue" id="exerciseCue"></p>
+        <p class="next-up" id="nextUp"></p>
+
+        <div class="complete-panel" id="completePanel" hidden>
+          <h2>Circuit complete</h2>
+          <p id="completeSummary"></p>
+        </div>
+
+        <div class="strip" id="strip" aria-hidden="true"></div>
+      </section>
+
+      <div class="controls">
+        <button id="startBtn" class="btn primary" type="button">Start</button>
+        <button id="pauseBtn" class="btn" type="button" disabled>Pause</button>
+        <button id="skipBtn" class="btn" type="button" disabled>Skip</button>
+        <button id="resetBtn" class="btn" type="button" disabled>Reset</button>
+      </div>
+
+      <section class="card" aria-labelledby="reminderHeading">
+        <h2 id="reminderHeading">Rest reminder</h2>
+        <div class="reminder-row">
+          <label class="switch-label" for="reminderToggle">
+            <span class="switch">
+              <input type="checkbox" id="reminderToggle" />
+              <span class="track" aria-hidden="true"></span>
+              <span class="knob" aria-hidden="true"></span>
+            </span>
+            <span>Enable</span>
+          </label>
+          <label class="visually-hidden" for="intervalSelect"
+            >Reminder interval in minutes</label
+          >
+          <select id="intervalSelect">
+            <option value="20">Every 20 min</option>
+            <option value="30" selected>Every 30 min</option>
+            <option value="45">Every 45 min</option>
+            <option value="60">Every 60 min</option>
+            <option value="90">Every 90 min</option>
+          </select>
+        </div>
+        <p class="reminder-next" id="reminderNext" aria-live="polite">Off</p>
+      </section>
+
+      <div
+        class="banner"
+        id="banner"
+        role="status"
+        aria-live="polite"
+        hidden
+        tabindex="-1"
+      >
+        <p>Time to move — take a reset break</p>
+        <div class="banner-actions">
+          <button id="bannerStart" class="primary" type="button">
+            Start circuit
+          </button>
+          <button id="bannerSnooze" type="button">Snooze 5 min</button>
+          <button id="bannerDismiss" type="button">Dismiss</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        "use strict";
+
+        // ---------- Data ----------
+        var DESK = [
+          {
+            name: "Neck Release",
+            dur: 30,
+            cue: "Slow big circles, chin leads. Reverse direction halfway.",
+            icon: "neck",
+          },
+          {
+            name: "Shoulder Rolls",
+            dur: 30,
+            cue: "Roll shoulders back in slow full circles, chest open.",
+            icon: "shoulder",
+          },
+          {
+            name: "Scapular Squeeze",
+            dur: 30,
+            cue: "Pull shoulder blades together, pause, release. No shrugging.",
+            icon: "spine",
+          },
+          {
+            name: "Wrist & Forearm Stretch",
+            dur: 30,
+            cue: "Extend arm, pull fingers back, then curl under. Switch sides.",
+            icon: "wrist",
+          },
+          {
+            name: "Seated Spinal Twist",
+            dur: 30,
+            cue: "Hand on opposite knee, twist from the ribs. Switch sides.",
+            icon: "spine",
+          },
+          {
+            name: "Seated Figure-4 Hip Stretch",
+            dur: 40,
+            cue: "Ankle on opposite knee, hinge forward gently. Switch sides.",
+            icon: "hip",
+          },
+          {
+            name: "Seated Chest Opener",
+            dur: 30,
+            cue: "Clasp hands behind the chair back, lift chest, drop shoulders.",
+            icon: "chest",
+          },
+          {
+            name: "Eye & Breath Reset",
+            dur: 20,
+            cue: "Look 20 feet away, breathe slow. Blink fully.",
+            icon: "eye",
+          },
+        ];
+
+        var FLOOR = [
+          {
+            name: "Cat-Cow",
+            dur: 45,
+            cue: "Arch and round the spine slowly, lead with your breath.",
+            icon: "spine",
+          },
+          {
+            name: "Child's Pose",
+            dur: 30,
+            cue: "Sink hips to heels, reach arms long, relax the neck.",
+            icon: "spine",
+          },
+          {
+            name: "Thoracic Extension",
+            dur: 45,
+            cue: "Upper back over a chair edge, arch gently, support your head.",
+            icon: "spine",
+          },
+          {
+            name: "Hip Flexor Lunge",
+            dur: 60,
+            cue: "Half-kneel, tuck the pelvis under, sink hips forward. Switch sides.",
+            icon: "hip",
+          },
+          {
+            name: "Bird-Dog",
+            dur: 45,
+            cue: "Extend opposite arm and leg, keep hips level. Switch sides.",
+            icon: "core",
+          },
+          {
+            name: "Glute Bridge",
+            dur: 45,
+            cue: "Drive through the heels, squeeze glutes at the top, lower slow.",
+            icon: "hip",
+          },
+          {
+            name: "Standing Forward Fold",
+            dur: 30,
+            cue: "Hinge at the hips, let head and arms hang heavy.",
+            icon: "spine",
+          },
+          {
+            name: "Wall Chest Stretch",
+            dur: 30,
+            cue: "Arm on the wall, rotate away, feel it across the chest. Switch sides.",
+            icon: "chest",
+          },
+          {
+            name: "Superman Hold",
+            dur: 30,
+            cue: "Lift arms and legs together, hold, keep the neck long.",
+            icon: "core",
+          },
+          {
+            name: "Standing Reach & Side Bend",
+            dur: 30,
+            cue: "Reach overhead, lean sideways from the ribs. Switch sides.",
+            icon: "spine",
+          },
+        ];
+
+        var CIRCUITS = { desk: DESK, floor: FLOOR };
+        var REST_DUR = { desk: 12, floor: 15 };
+        var MODE_LABEL = { desk: "Desk", floor: "Floor" };
+
+        // ---------- DOM ----------
+        var el = {
+          modeDeskBtn: document.getElementById("modeDeskBtn"),
+          modeFloorBtn: document.getElementById("modeFloorBtn"),
+          idleSummary: document.getElementById("idleSummary"),
+          phasePill: document.getElementById("phasePill"),
+          ringFill: document.getElementById("ringFill"),
+          timerReadout: document.getElementById("timerReadout"),
+          exerciseName: document.getElementById("exerciseName"),
+          exerciseCue: document.getElementById("exerciseCue"),
+          nextUp: document.getElementById("nextUp"),
+          completePanel: document.getElementById("completePanel"),
+          completeSummary: document.getElementById("completeSummary"),
+          strip: document.getElementById("strip"),
+          startBtn: document.getElementById("startBtn"),
+          pauseBtn: document.getElementById("pauseBtn"),
+          skipBtn: document.getElementById("skipBtn"),
+          resetBtn: document.getElementById("resetBtn"),
+          muteBtn: document.getElementById("muteBtn"),
+          muteIconUse: document.getElementById("muteIconUse"),
+          themeBtn: document.getElementById("themeBtn"),
+          themeIconUse: document.getElementById("themeIconUse"),
+          reminderToggle: document.getElementById("reminderToggle"),
+          intervalSelect: document.getElementById("intervalSelect"),
+          reminderNext: document.getElementById("reminderNext"),
+          banner: document.getElementById("banner"),
+          bannerStart: document.getElementById("bannerStart"),
+          bannerSnooze: document.getElementById("bannerSnooze"),
+          bannerDismiss: document.getElementById("bannerDismiss"),
+        };
+
+        var RING_CIRC = 2 * Math.PI * 70;
+
+        // ---------- State ----------
+        var state = {
+          mode: "desk",
+          steps: [],
+          stepIndex: -1,
+          phase: "idle", // idle | running | paused | complete
+          stepStart: 0,
+          pausedAt: 0,
+          muted: false,
+          rafId: null,
+        };
+
+        function buildSteps(modeKey) {
+          var exs = CIRCUITS[modeKey];
+          var restDur = REST_DUR[modeKey];
+          var steps = [];
+          for (var i = 0; i < exs.length; i++) {
+            steps.push({
+              type: "work",
+              name: exs[i].name,
+              cue: exs[i].cue,
+              icon: exs[i].icon,
+              dur: exs[i].dur,
+              exIndex: i,
+            });
+            if (i < exs.length - 1) {
+              steps.push({
+                type: "rest",
+                name: "Rest",
+                cue: "Shake it out, breathe.",
+                icon: null,
+                dur: restDur,
+              });
+            }
+          }
+          return steps;
+        }
+
+        function fmtTime(ms) {
+          var total = Math.max(0, Math.ceil(ms / 1000));
+          var m = Math.floor(total / 60);
+          var s = total % 60;
+          return (m < 10 ? "0" + m : m) + ":" + (s < 10 ? "0" + s : s);
+        }
+
+        function totalCircuitSeconds(modeKey) {
+          var exs = CIRCUITS[modeKey];
+          var restDur = REST_DUR[modeKey];
+          var total = 0;
+          for (var i = 0; i < exs.length; i++) total += exs[i].dur;
+          total += (exs.length - 1) * restDur;
+          return total;
+        }
+
+        // ---------- Audio ----------
+        var audioCtx = null;
+        function ensureAudioCtx() {
+          if (audioCtx) return audioCtx;
+          try {
+            var Ctx = window.AudioContext || window.webkitAudioContext;
+            if (!Ctx) return null;
+            audioCtx = new Ctx();
+          } catch (e) {
+            audioCtx = null;
+          }
+          return audioCtx;
+        }
+        function unlockAudio() {
+          var ctx = ensureAudioCtx();
+          if (ctx && ctx.state === "suspended") {
+            ctx.resume().catch(function () {});
+          }
+        }
+        function playTone(freqs, dur) {
+          if (state.muted) return;
+          try {
+            var ctx = ensureAudioCtx();
+            if (!ctx) return;
+            if (ctx.state === "suspended") ctx.resume().catch(function () {});
+            var t = ctx.currentTime;
+            var noteDur = dur || 0.14;
+            var gap = 0.06;
+            for (var i = 0; i < freqs.length; i++) {
+              var osc = ctx.createOscillator();
+              var gain = ctx.createGain();
+              osc.type = "sine";
+              osc.frequency.value = freqs[i];
+              gain.gain.setValueAtTime(0.0001, t);
+              gain.gain.exponentialRampToValueAtTime(0.28, t + 0.02);
+              gain.gain.exponentialRampToValueAtTime(0.0001, t + noteDur);
+              osc.connect(gain).connect(ctx.destination);
+              osc.start(t);
+              osc.stop(t + noteDur + 0.02);
+              t += noteDur + gap;
+            }
+          } catch (e) {
+            /* degrade silently */
+          }
+        }
+        function playWorkTone() {
+          playTone([440, 660]);
+        }
+        function playRestTone() {
+          playTone([330]);
+        }
+        function playCompleteTone() {
+          playTone([440, 554, 660]);
+        }
+        function playReminderTone() {
+          playTone([523, 392]);
+        }
+
+        // ---------- Rendering ----------
+        function renderIdleSummary() {
+          var count = CIRCUITS[state.mode].length;
+          var mins = Math.round(totalCircuitSeconds(state.mode) / 60);
+          el.idleSummary.textContent = count + " moves · ~" + mins + " min";
+        }
+
+        function buildStrip() {
+          el.strip.innerHTML = "";
+          state.steps.forEach(function (step, i) {
+            var seg = document.createElement("div");
+            seg.className = "seg";
+            seg.dataset.type = step.type;
+            seg.dataset.index = String(i);
+            if (step.type === "rest") {
+              seg.style.flex = "0 0 14px";
+            } else {
+              seg.style.flex = step.dur + " 1 0";
+            }
+            var fill = document.createElement("div");
+            fill.className = "seg-fill";
+            seg.appendChild(fill);
+            el.strip.appendChild(seg);
+          });
+        }
+
+        function setSegProgress(index, progress) {
+          var seg = el.strip.children[index];
+          if (!seg) return;
+          var fill = seg.firstElementChild;
+          fill.style.transform = "scaleX(" + progress + ")";
+        }
+
+        function renderModeButtons() {
+          var lockControls =
+            state.phase === "running" || state.phase === "paused";
+          el.modeDeskBtn.setAttribute(
+            "aria-pressed",
+            state.mode === "desk" ? "true" : "false",
+          );
+          el.modeFloorBtn.setAttribute(
+            "aria-pressed",
+            state.mode === "floor" ? "true" : "false",
+          );
+          el.modeDeskBtn.disabled = lockControls;
+          el.modeFloorBtn.disabled = lockControls;
+        }
+
+        function renderControls() {
+          var p = state.phase;
+          el.startBtn.disabled = p === "running" || p === "paused";
+          el.startBtn.textContent = p === "complete" ? "Start again" : "Start";
+          el.pauseBtn.disabled = !(p === "running" || p === "paused");
+          el.pauseBtn.textContent = p === "paused" ? "Resume" : "Pause";
+          el.skipBtn.disabled = !(p === "running" || p === "paused");
+          el.resetBtn.disabled = p === "idle";
+        }
+
+        function renderIdleStage() {
+          el.phasePill.textContent = "Ready";
+          el.phasePill.dataset.phase = "idle";
+          el.timerReadout.style.display = "none";
+          el.exerciseName.textContent = "Pick a mode and press Start";
+          el.exerciseCue.textContent = "";
+          el.nextUp.textContent = "";
+          el.completePanel.hidden = true;
+          el.ringFill.dataset.phase = "idle";
+          el.ringFill.style.strokeDashoffset = String(RING_CIRC);
+          resetStripFills();
+        }
+
+        function resetStripFills() {
+          for (var i = 0; i < el.strip.children.length; i++) {
+            setSegProgress(i, 0);
+          }
+        }
+
+        function renderStepIntro(step) {
+          el.completePanel.hidden = true;
+          el.timerReadout.style.display = "";
+          el.phasePill.textContent = step.type === "work" ? "Work" : "Rest";
+          el.phasePill.dataset.phase = step.type;
+          el.ringFill.dataset.phase = step.type;
+          el.exerciseName.textContent =
+            step.type === "work" ? step.name : "Rest";
+          el.exerciseCue.textContent =
+            step.type === "work" ? step.cue : "Shake it out, breathe.";
+
+          var next = state.steps[state.stepIndex + 1];
+          if (!next) {
+            el.nextUp.textContent = "Last move of the circuit.";
+          } else if (next.type === "work") {
+            el.nextUp.innerHTML =
+              "Next up: <strong>" + escapeHtml(next.name) + "</strong>";
+          } else {
+            var following = state.steps[state.stepIndex + 2];
+            el.nextUp.innerHTML =
+              "Next up: <strong>Rest</strong>" +
+              (following ? ", then " + escapeHtml(following.name) : "");
+          }
+        }
+
+        function escapeHtml(s) {
+          return String(s).replace(/[&<>"']/g, function (c) {
+            return {
+              "&": "&amp;",
+              "<": "&lt;",
+              ">": "&gt;",
+              '"': "&quot;",
+              "'": "&#39;",
+            }[c];
+          });
+        }
+
+        function renderProgress(step, progress, remainingMs) {
+          el.timerReadout.textContent = fmtTime(remainingMs);
+          var offset = RING_CIRC * (1 - Math.min(1, Math.max(0, progress)));
+          el.ringFill.style.strokeDashoffset = String(offset);
+          setSegProgress(state.stepIndex, progress);
+        }
+
+        function renderComplete() {
+          el.phasePill.textContent = "Complete";
+          el.phasePill.dataset.phase = "complete";
+          el.timerReadout.style.display = "none";
+          el.exerciseName.textContent = "Nice work.";
+          el.exerciseCue.textContent = "";
+          el.nextUp.textContent = "";
+          el.ringFill.style.strokeDashoffset = "0";
+          var exCount = CIRCUITS[state.mode].length;
+          var mins = Math.round(totalCircuitSeconds(state.mode) / 60);
+          el.completeSummary.textContent =
+            exCount + " moves completed · ~" + mins + " min";
+          el.completePanel.hidden = false;
+          for (var i = 0; i < el.strip.children.length; i++)
+            setSegProgress(i, 1);
+        }
+
+        // ---------- Timer engine ----------
+        function frame(ts) {
+          if (state.phase !== "running") return;
+          var step = state.steps[state.stepIndex];
+          var durMs = step.dur * 1000;
+          var elapsed = ts - state.stepStart;
+          if (elapsed >= durMs) {
+            advanceStep(ts);
+            return;
+          }
+          renderProgress(step, elapsed / durMs, durMs - elapsed);
+          state.rafId = requestAnimationFrame(frame);
+        }
+
+        function advanceStep(ts) {
+          setSegProgress(state.stepIndex, 1);
+          state.stepIndex++;
+          if (state.stepIndex >= state.steps.length) {
+            state.phase = "complete";
+            cancelAnimationFrame(state.rafId);
+            playCompleteTone();
+            renderControls();
+            renderComplete();
+            return;
+          }
+          state.stepStart = ts;
+          var step = state.steps[state.stepIndex];
+          renderStepIntro(step);
+          if (step.type === "work") playWorkTone();
+          else playRestTone();
+          state.rafId = requestAnimationFrame(frame);
+        }
+
+        function startCircuit() {
+          unlockAudio();
+          state.steps = buildSteps(state.mode);
+          buildStrip();
+          state.stepIndex = 0;
+          state.phase = "running";
+          state.stepStart = performance.now();
+          renderControls();
+          renderModeButtons();
+          var step = state.steps[0];
+          renderStepIntro(step);
+          if (step.type === "work") playWorkTone();
+          else playRestTone();
+          if (state.rafId) cancelAnimationFrame(state.rafId);
+          state.rafId = requestAnimationFrame(frame);
+        }
+
+        function pauseCircuit() {
+          if (state.phase !== "running") return;
+          state.phase = "paused";
+          state.pausedAt = performance.now();
+          cancelAnimationFrame(state.rafId);
+          renderControls();
+        }
+
+        function resumeCircuit() {
+          if (state.phase !== "paused") return;
+          var now = performance.now();
+          state.stepStart += now - state.pausedAt;
+          state.phase = "running";
+          renderControls();
+          state.rafId = requestAnimationFrame(frame);
+        }
+
+        function skipStep() {
+          if (state.phase !== "running" && state.phase !== "paused") return;
+          if (state.rafId) cancelAnimationFrame(state.rafId);
+          state.phase = "running";
+          renderControls();
+          advanceStep(performance.now());
+        }
+
+        function resetCircuit() {
+          if (state.rafId) cancelAnimationFrame(state.rafId);
+          state.phase = "idle";
+          state.stepIndex = -1;
+          state.steps = buildSteps(state.mode);
+          buildStrip();
+          renderControls();
+          renderModeButtons();
+          renderIdleStage();
+          renderIdleSummary();
+        }
+
+        function switchMode(modeKey) {
+          if (state.phase === "running" || state.phase === "paused") return;
+          state.mode = modeKey;
+          resetCircuit();
+        }
+
+        // ---------- Wiring: circuit controls ----------
+        el.modeDeskBtn.addEventListener("click", function () {
+          switchMode("desk");
+        });
+        el.modeFloorBtn.addEventListener("click", function () {
+          switchMode("floor");
+        });
+
+        el.startBtn.addEventListener("click", startCircuit);
+        el.pauseBtn.addEventListener("click", function () {
+          if (state.phase === "running") pauseCircuit();
+          else if (state.phase === "paused") resumeCircuit();
+        });
+        el.skipBtn.addEventListener("click", skipStep);
+        el.resetBtn.addEventListener("click", resetCircuit);
+
+        el.muteBtn.addEventListener("click", function () {
+          state.muted = !state.muted;
+          el.muteBtn.setAttribute(
+            "aria-pressed",
+            state.muted ? "true" : "false",
+          );
+          var label = state.muted ? "Unmute sound" : "Mute sound";
+          el.muteBtn.setAttribute("aria-label", label);
+          el.muteBtn.setAttribute("title", label);
+          el.muteIconUse.setAttribute(
+            "href",
+            state.muted ? "#icon-mute-off" : "#icon-mute-on",
+          );
+        });
+
+        // ---------- Theme ----------
+        function currentEffectiveTheme() {
+          var attr = document.documentElement.getAttribute("data-theme");
+          if (attr) return attr;
+          return window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "dark"
+            : "light";
+        }
+        function updateThemeIcon() {
+          var eff = currentEffectiveTheme();
+          el.themeIconUse.setAttribute(
+            "href",
+            eff === "dark" ? "#icon-sun" : "#icon-moon",
+          );
+        }
+        el.themeBtn.addEventListener("click", function () {
+          var eff = currentEffectiveTheme();
+          var next = eff === "dark" ? "light" : "dark";
+          document.documentElement.setAttribute("data-theme", next);
+          updateThemeIcon();
+        });
+        updateThemeIcon();
+
+        // ---------- Reminder ----------
+        var LS_ENABLED = "orc_reminder_enabled";
+        var LS_INTERVAL = "orc_reminder_interval";
+        var reminderTimeoutId = null;
+        var reminderDisplayIntervalId = null;
+        var reminderNextFire = 0;
+        var reminderEnabled = false;
+        var originalTitle = document.title;
+        var titleFlashIntervalId = null;
+        var prefersReducedMotion = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+
+        function getSelectedInterval() {
+          return parseInt(el.intervalSelect.value, 10);
+        }
+
+        function saveReminderPrefs() {
+          try {
+            localStorage.setItem(LS_ENABLED, reminderEnabled ? "1" : "0");
+            localStorage.setItem(LS_INTERVAL, String(getSelectedInterval()));
+          } catch (e) {
+            /* storage unavailable, ignore */
+          }
+        }
+
+        function loadReminderPrefs() {
+          var enabled = false,
+            interval = 30;
+          try {
+            enabled = localStorage.getItem(LS_ENABLED) === "1";
+            var storedInterval = parseInt(
+              localStorage.getItem(LS_INTERVAL),
+              10,
+            );
+            if (!isNaN(storedInterval)) interval = storedInterval;
+          } catch (e) {
+            /* storage unavailable */
+          }
+          return { enabled: enabled, interval: interval };
+        }
+
+        function clearReminderTimer() {
+          if (reminderTimeoutId) {
+            clearTimeout(reminderTimeoutId);
+            reminderTimeoutId = null;
+          }
+        }
+
+        function scheduleReminderCheck() {
+          clearReminderTimer();
+          var ms = Math.max(0, reminderNextFire - Date.now());
+          reminderTimeoutId = setTimeout(fireReminder, ms);
+        }
+
+        function armReminder(minutes) {
+          reminderNextFire = Date.now() + minutes * 60000;
+          scheduleReminderCheck();
+        }
+
+        function fireReminder() {
+          var minutes = getSelectedInterval();
+          reminderNextFire = Date.now() + minutes * 60000;
+          scheduleReminderCheck();
+          showBanner();
+          playReminderTone();
+          startTitleFlash();
+        }
+
+        function updateReminderDisplay() {
+          if (!reminderEnabled) {
+            el.reminderNext.textContent = "Off";
+            return;
+          }
+          var remain = Math.max(0, reminderNextFire - Date.now());
+          el.reminderNext.textContent = "Next nudge in " + fmtTime(remain);
+        }
+        reminderDisplayIntervalId = setInterval(updateReminderDisplay, 500);
+
+        function startTitleFlash() {
+          if (prefersReducedMotion) return;
+          if (titleFlashIntervalId) return;
+          var toggle = false;
+          titleFlashIntervalId = setInterval(function () {
+            document.title = toggle ? originalTitle : "⏰ Time to move";
+            toggle = !toggle;
+          }, 1000);
+        }
+        function stopTitleFlash() {
+          if (titleFlashIntervalId) {
+            clearInterval(titleFlashIntervalId);
+            titleFlashIntervalId = null;
+            document.title = originalTitle;
+          }
+        }
+
+        function showBanner() {
+          el.banner.hidden = false;
+          el.banner.focus();
+        }
+        function hideBanner() {
+          el.banner.hidden = true;
+        }
+
+        el.reminderToggle.addEventListener("change", function () {
+          unlockAudio();
+          reminderEnabled = el.reminderToggle.checked;
+          saveReminderPrefs();
+          if (reminderEnabled) {
+            armReminder(getSelectedInterval());
+          } else {
+            clearReminderTimer();
+            hideBanner();
+            stopTitleFlash();
+          }
+          updateReminderDisplay();
+        });
+
+        el.intervalSelect.addEventListener("change", function () {
+          saveReminderPrefs();
+          if (reminderEnabled) {
+            armReminder(getSelectedInterval());
+            updateReminderDisplay();
+          }
+        });
+
+        el.bannerStart.addEventListener("click", function () {
+          hideBanner();
+          stopTitleFlash();
+          if (state.phase === "running" || state.phase === "paused") {
+            resetCircuit();
+          }
+          startCircuit();
+        });
+        el.bannerSnooze.addEventListener("click", function () {
+          hideBanner();
+          stopTitleFlash();
+          reminderNextFire = Date.now() + 5 * 60000;
+          scheduleReminderCheck();
+          updateReminderDisplay();
+        });
+        el.bannerDismiss.addEventListener("click", function () {
+          hideBanner();
+          stopTitleFlash();
+        });
+
+        // ---------- Init ----------
+        function init() {
+          var prefs = loadReminderPrefs();
+          reminderEnabled = prefs.enabled;
+          el.reminderToggle.checked = prefs.enabled;
+          var validIntervals = ["20", "30", "45", "60", "90"];
+          var intervalStr = String(prefs.interval);
+          el.intervalSelect.value =
+            validIntervals.indexOf(intervalStr) !== -1 ? intervalStr : "30";
+          if (reminderEnabled) {
+            armReminder(getSelectedInterval());
+          }
+          updateReminderDisplay();
+
+          state.steps = buildSteps(state.mode);
+          buildStrip();
+          renderIdleSummary();
+          renderIdleStage();
+          renderControls();
+          renderModeButtons();
+        }
+
+        init();
+      })();
+    </script>
+  </body>
+</html>
