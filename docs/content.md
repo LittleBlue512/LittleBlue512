@@ -1,4 +1,4 @@
-# Chattipoom
+# Chattipoom's Personal Website Content
 
 ## Chattipoom
 
@@ -8,32 +8,33 @@ A software engineer by profession, a gamer by passion, and a wanderer by choice.
 
 ## Currently
 
-### 01 Backlog Diving
+### 01 Exploring AI
 
-Catching up on years of video games I bought but never had time to play.
+Grinding AI Engineer on roadmap.sh.
 
-### 02 Exploring AI
+### 02 Learning Japanese
 
-Experimenting with new AI tools and finding practical ways to use them.
+Chasing JLPT N4.
 
 ### 03 Leveling Up
 
-Building side projects to level up my software engineering skills.
+Small side projects, finished ones preferred.
 
 ## Links
 
-- **Backloggd** — games I've played — https://backloggd.com/u/LittleBlue/
-- **GitHub** — code I tinker with — https://www.github.com/LittleBlue512
-- **LinkedIn** — where I work — https://www.linkedin.com/in/chattipoom-sirimul-14526719b
-- **Medium** — things I write — https://medium.com/@Chattipoom.s
-- **MyAnimeList** — anime I've watched — https://myanimelist.net/profile/BinaryWabbit
-- **Steam** — games I own — https://steamcommunity.com/profiles/76561198061400568/
+- **Backloggd** — Games — https://backloggd.com/u/LittleBlue
+- **GitHub** — Code — https://www.github.com/LittleBlue512
+- **LinkedIn** — Cringe — https://www.linkedin.com/in/chattipoom-sirimul-14526719b
+- **Medium** — Thoughts — https://medium.com/@Chattipoom.s
+- **MyAnimeList** — Anime — https://myanimelist.net/profile/BinaryWabbit
+- **Roadmaps** — Learn — https://roadmap.sh/u/littleblue
+- **Steam** — Games — https://steamcommunity.com/profiles/76561198061400568
 
 ## Friends
 
-- Akatsuki — https://raidiizx.github.io/
-- Armirate — https://armirate.github.io/
-- Warayut — https://www.warayut.xyz/
+- Akatsuki — https://raidiizx.github.io
+- Armirate — https://armirate.github.io
+- Warayut — https://www.warayut.xyz
 - Sawanya — https://shishibaa.github.io/index.html
 
 ## Say Hi
@@ -43,3 +44,5 @@ chattipoom.siri@gmail.com
 ---
 
 ~ 🌸 ~
+
+Banner art by waneella — https://waneella.com · Updated August 2026

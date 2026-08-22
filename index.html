@@ -16,172 +16,192 @@
         <meta name="twitter:title" content="Chattipoom" />
         <meta name="twitter:description" content="Chattipoom Sirimul — software engineer, gamer, and wanderer." />
 
-        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            rel="stylesheet"
-            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Manrope:wght@400..700&family=Space+Mono:wght@400;700&display=swap"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&display=swap" rel="stylesheet" />
         <link rel="stylesheet" href="css/global.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
         <link rel="icon" type="image/x-icon" href="/assets/images/black-and-yellow.ico" />
         <title>Chattipoom</title>
     </head>
 
     <body>
-        <div class="scene" aria-hidden="true">
-            <div class="sky"></div>
-            <div class="dust"></div>
-            <div class="hills" id="parallax-hills">
-                <svg class="hill hill--far" viewBox="0 0 1440 220" preserveAspectRatio="none">
-                    <path d="M0 160 C 240 90, 480 120, 720 110 S 1200 80, 1440 130 L1440 220 L0 220 Z" />
-                </svg>
-                <svg class="hill hill--mid" viewBox="0 0 1440 200" preserveAspectRatio="none">
-                    <path d="M0 150 C 300 100, 560 170, 860 140 S 1260 120, 1440 160 L1440 200 L0 200 Z" />
-                </svg>
-                <svg class="hill hill--near" viewBox="0 0 1440 180" preserveAspectRatio="none">
-                    <path d="M0 130 C 220 170, 520 120, 760 150 S 1180 180, 1440 140 L1440 180 L0 180 Z" />
-                </svg>
-            </div>
-        </div>
-        <div class="grain" aria-hidden="true"></div>
+        <svg xmlns="http://www.w3.org/2000/svg" hidden aria-hidden="true">
+            <symbol id="i-backloggd" viewBox="0 0 24 24">
+                <path
+                    fill-rule="evenodd"
+                    d="M8.5 6h7a6 6 0 0 1 5.9 5l1 6a3 3 0 0 1-5.4 2.3L15.2 17H8.8l-1.8 2.3A3 3 0 0 1 1.6 17l1-6A6 6 0 0 1 8.5 6Zm-1.4 3.4v1.7H5.4v1.8h1.7v1.7h1.8v-1.7h1.7v-1.8H8.9V9.4H7.1Zm8.5.5a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3Zm2.6 1.45a1.15 1.15 0 1 0 0 2.3 1.15 1.15 0 0 0 0-2.3Z"
+                />
+            </symbol>
+            <symbol id="i-github" viewBox="0 0 24 24">
+                <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                />
+            </symbol>
+            <symbol id="i-linkedin" viewBox="0 0 24 24">
+                <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+            </symbol>
+            <symbol id="i-medium" viewBox="0 0 24 24">
+                <path
+                    d="M4.21 0A4.201 4.201 0 0 0 0 4.21v15.58A4.201 4.201 0 0 0 4.21 24h15.58A4.201 4.201 0 0 0 24 19.79v-1.093c-.137.013-.278.02-.422.02-2.577 0-4.027-2.146-4.09-4.832a7.592 7.592 0 0 1 .022-.708c.093-1.186.475-2.241 1.105-3.022a3.885 3.885 0 0 1 1.395-1.1c.468-.237 1.127-.367 1.664-.367h.023c.101 0 .202.004.303.01V4.211A4.201 4.201 0 0 0 19.79 0Zm.198 5.583h4.165l3.588 8.435 3.59-8.435h3.864v.146l-.019.004c-.705.16-1.063.397-1.063 1.254h-.003l.003 10.274c.06.676.424.885 1.063 1.03l.02.004v.145h-4.923v-.145l.019-.005c.639-.144.994-.353 1.054-1.03V7.267l-4.745 11.15h-.261L6.15 7.569v9.445c0 .857.358 1.094 1.063 1.253l.02.004v.147H4.405v-.147l.019-.004c.705-.16 1.065-.397 1.065-1.253V6.987c0-.857-.358-1.094-1.064-1.254l-.018-.004zm19.25 3.668c-1.086.023-1.733 1.323-1.813 3.124H24V9.298a1.378 1.378 0 0 0-.342-.047Zm-1.862 3.632c-.1 1.756.86 3.239 2.204 3.634v-3.634z"
+                />
+            </symbol>
+            <symbol id="i-myanimelist" viewBox="0 0 24 24">
+                <path
+                    d="M14.921 6.479c-.82 0-3.683 0-4.947 3.156-.662 1.652-.986 4.812.876 7.886l1.934-1.41s-.767-1.095-1.083-3.191h2.897l.022 3.19h2.604V8.835h-2.581v2.043l-2.46-.023s.413-2.408 2.877-2.336h2.454l-.572-2.04ZM0 6.528v9.624h2.348v-5.84l2.031 2.664 2.047-2.652v5.828h2.336V6.528H6.437L4.368 9.474 2.31 6.528Zm18.447.022v9.583h5.022L24 14.09h-3.232V6.55Z"
+                />
+            </symbol>
+            <symbol id="i-roadmapsh" viewBox="0 0 24 24">
+                <path
+                    d="M20.693 0H3.307A3.307 3.307 0 0 0 0 3.307v17.386A3.307 3.307 0 0 0 3.307 24h17.386A3.307 3.307 0 0 0 24 20.693V3.307A3.307 3.307 0 0 0 20.693 0zm-7.706 9.18c-.349.031-.689.078-1.021.142-.333.063-.65.134-.95.214a3.64 3.64 0 0 0-.736.237v8.097a5.522 5.522 0 0 1-.76.143c-.333.047-.68.07-1.045.07a5.87 5.87 0 0 1-.95-.07 1.588 1.588 0 0 1-.688-.285 1.476 1.476 0 0 1-.452-.57c-.095-.253-.142-.578-.142-.974V9.061c0-.364.063-.673.19-.926.142-.27.34-.507.594-.713a3.93 3.93 0 0 1 .926-.546 9.133 9.133 0 0 1 2.54-.736 8.093 8.093 0 0 1 1.378-.119c.76 0 1.361.15 1.804.451.444.285.665.76.665 1.425 0 .222-.032.443-.095.665a3.075 3.075 0 0 1-.237.57c-.341 0-.682.016-1.021.047zm5.113 8.453c-.412.443-.974.665-1.686.665s-1.274-.222-1.686-.665c-.412-.443-.617-.998-.617-1.662 0-.665.205-1.22.617-1.663.412-.443.974-.664 1.686-.664s1.274.221 1.686.664c.411.444.617.998.617 1.663 0 .664-.206 1.219-.617 1.662z"
+                />
+            </symbol>
+            <symbol id="i-steam" viewBox="0 0 24 24">
+                <path
+                    d="M11.979 0C5.678 0 .511 4.86.022 11.037l6.432 2.658c.545-.371 1.203-.59 1.912-.59.063 0 .125.004.188.006l2.861-4.142V8.91c0-2.495 2.028-4.524 4.524-4.524 2.494 0 4.524 2.031 4.524 4.527s-2.03 4.525-4.524 4.525h-.105l-4.076 2.911c0 .052.004.105.004.159 0 1.875-1.515 3.396-3.39 3.396-1.635 0-3.016-1.173-3.331-2.727L.436 15.27C1.862 20.307 6.486 24 11.979 24c6.627 0 11.999-5.373 11.999-12S18.605 0 11.979 0zM7.54 18.21l-1.473-.61c.262.543.714.999 1.314 1.25 1.297.539 2.793-.076 3.332-1.375.263-.63.264-1.319.005-1.949s-.75-1.121-1.377-1.383c-.624-.26-1.29-.249-1.878-.03l1.523.63c.956.4 1.409 1.5 1.009 2.455-.397.957-1.497 1.41-2.454 1.012H7.54zm11.415-9.303c0-1.662-1.353-3.015-3.015-3.015-1.665 0-3.015 1.353-3.015 3.015 0 1.665 1.35 3.015 3.015 3.015 1.663 0 3.015-1.35 3.015-3.015zm-5.273-.005c0-1.252 1.013-2.266 2.265-2.266 1.249 0 2.266 1.014 2.266 2.266 0 1.251-1.017 2.265-2.266 2.265-1.253 0-2.265-1.014-2.265-2.265z"
+                />
+            </symbol>
+        </svg>
+
+        <header>
+            <video
+                class="banner"
+                src="assets/media/banner.mp4"
+                width="960"
+                height="480"
+                autoplay
+                muted
+                loop
+                playsinline
+                aria-hidden="true"
+                tabindex="-1"
+            ></video>
+            <h1>Chattipoom</h1>
+            <p>Lo-fi &amp; chill.</p>
+            <p>A software engineer by profession, a gamer by passion, and a wanderer by choice.</p>
+        </header>
 
         <main>
-            <section class="hero">
-                <p class="now-playing">
-                    <span class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    lo-fi beats &mdash; now playing
-                </p>
-                <hgroup>
-                    <h1>Chattipoom</h1>
-                    <p class="tagline">Lo-fi &amp; chill.</p>
-                </hgroup>
-                <p class="intro">A software engineer by profession, a gamer by passion, and a wanderer by choice.</p>
-            </section>
-
-            <section>
-                <h2 class="section-label"><span class="dot"></span> currently</h2>
-
-                <div class="focus-grid">
-                    <article class="card">
-                        <span class="card-num">01</span>
-                        <h3>Backlog Diving</h3>
-                        <p>Catching up on years of video games I bought but never had time to play.</p>
-                        <span class="tag">Gaming</span>
-                    </article>
-
-                    <article class="card">
-                        <span class="card-num">02</span>
+            <section aria-labelledby="currently">
+                <h2 id="currently">Currently</h2>
+                <ol>
+                    <li>
                         <h3>Exploring AI</h3>
-                        <p>Experimenting with new AI tools and finding practical ways to use them.</p>
-                        <span class="tag">AI</span>
-                    </article>
-
-                    <article class="card">
-                        <span class="card-num">03</span>
+                        <p>Grinding AI Engineer on roadmap.sh.</p>
+                    </li>
+                    <li>
+                        <h3>Learning Japanese</h3>
+                        <p>Chasing JLPT N4.</p>
+                    </li>
+                    <li>
                         <h3>Leveling Up</h3>
-                        <p>Building side projects to level up my software engineering skills.</p>
-                        <span class="tag">Engineering</span>
-                    </article>
-                </div>
+                        <p>Small side projects, finished ones preferred.</p>
+                    </li>
+                </ol>
             </section>
 
-            <section class="connect">
-                <div class="connect-block">
-                    <h2 class="section-label"><span class="dot"></span> links</h2>
-                    <div class="link-grid">
-                        <a class="link-tile" href="https://backloggd.com/u/LittleBlue/" target="_blank">
-                            <span class="link-ico"><i class="fas fa-gamepad"></i></span>
-                            <span class="link-body">
-                                <span class="link-name">Backloggd</span>
-                                <span class="link-sub">games I've played</span>
-                            </span>
-                            <i class="fas fa-arrow-up link-arrow"></i>
+            <nav aria-labelledby="links">
+                <h2 id="links">Links</h2>
+                <ul>
+                    <li>
+                        <a rel="me" href="https://backloggd.com/u/LittleBlue">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-backloggd" />
+                            </svg>
+                            <span>Backloggd</span>
                         </a>
-                        <a class="link-tile" href="https://www.github.com/LittleBlue512" target="_blank">
-                            <span class="link-ico"><i class="fab fa-github"></i></span>
-                            <span class="link-body">
-                                <span class="link-name">GitHub</span>
-                                <span class="link-sub">code I tinker with</span>
-                            </span>
-                            <i class="fas fa-arrow-up link-arrow"></i>
+                        <span class="tag">Games</span>
+                    </li>
+                    <li>
+                        <a rel="me" href="https://www.github.com/LittleBlue512">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-github" />
+                            </svg>
+                            <span>GitHub</span>
                         </a>
-                        <a
-                            class="link-tile"
-                            href="https://www.linkedin.com/in/chattipoom-sirimul-14526719b"
-                            target="_blank"
-                        >
-                            <span class="link-ico"><i class="fab fa-linkedin"></i></span>
-                            <span class="link-body">
-                                <span class="link-name">LinkedIn</span>
-                                <span class="link-sub">where I work</span>
-                            </span>
-                            <i class="fas fa-arrow-up link-arrow"></i>
+                        <span class="tag">Code</span>
+                    </li>
+                    <li>
+                        <a rel="me" href="https://www.linkedin.com/in/chattipoom-sirimul-14526719b">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-linkedin" />
+                            </svg>
+                            <span>LinkedIn</span>
                         </a>
-                        <a class="link-tile" href="https://medium.com/@Chattipoom.s" target="_blank">
-                            <span class="link-ico"><i class="fab fa-medium"></i></span>
-                            <span class="link-body">
-                                <span class="link-name">Medium</span>
-                                <span class="link-sub">things I write</span>
-                            </span>
-                            <i class="fas fa-arrow-up link-arrow"></i>
+                        <span class="tag">Cringe</span>
+                    </li>
+                    <li>
+                        <a rel="me" href="https://medium.com/@Chattipoom.s">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-medium" />
+                            </svg>
+                            <span>Medium</span>
                         </a>
-                        <a class="link-tile" href="https://myanimelist.net/profile/BinaryWabbit" target="_blank">
-                            <span class="link-ico"><i class="fas fa-play"></i></span>
-                            <span class="link-body">
-                                <span class="link-name">MyAnimeList</span>
-                                <span class="link-sub">anime I've watched</span>
-                            </span>
-                            <i class="fas fa-arrow-up link-arrow"></i>
+                        <span class="tag">Thoughts</span>
+                    </li>
+                    <li>
+                        <a rel="me" href="https://myanimelist.net/profile/BinaryWabbit">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-myanimelist" />
+                            </svg>
+                            <span>MyAnimeList</span>
                         </a>
-                        <a
-                            class="link-tile"
-                            href="https://steamcommunity.com/profiles/76561198061400568/"
-                            target="_blank"
-                        >
-                            <span class="link-ico"><i class="fab fa-steam"></i></span>
-                            <span class="link-body">
-                                <span class="link-name">Steam</span>
-                                <span class="link-sub">games I own</span>
-                            </span>
-                            <i class="fas fa-arrow-up link-arrow"></i>
+                        <span class="tag">Anime</span>
+                    </li>
+                    <li>
+                        <a rel="me" href="https://roadmap.sh/u/littleblue">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-roadmapsh" />
+                            </svg>
+                            <span>Roadmaps</span>
                         </a>
-                    </div>
-                </div>
+                        <span class="tag">Learn</span>
+                    </li>
+                    <li>
+                        <a rel="me" href="https://steamcommunity.com/profiles/76561198061400568">
+                            <svg class="icon" width="16" height="16" aria-hidden="true" focusable="false">
+                                <use href="#i-steam" />
+                            </svg>
+                            <span>Steam</span>
+                        </a>
+                        <span class="tag">Games</span>
+                    </li>
+                </ul>
+            </nav>
 
-                <div class="connect-block">
-                    <h2 class="section-label"><span class="dot"></span> friends</h2>
-                    <div class="friend-row">
-                        <a class="friend" href="https://raidiizx.github.io/" target="_blank">
-                            <span class="friend-avatar">A</span>
-                            <span class="friend-name">Akatsuki</span>
-                        </a>
-                        <a class="friend" href="https://armirate.github.io/" target="_blank">
-                            <span class="friend-avatar">A</span>
-                            <span class="friend-name">Armirate</span>
-                        </a>
-                        <a class="friend" href="https://www.warayut.xyz/" target="_blank">
-                            <span class="friend-avatar">W</span>
-                            <span class="friend-name">Warayut</span>
-                        </a>
-                        <a class="friend" href="https://shishibaa.github.io/index.html" target="_blank">
-                            <span class="friend-avatar">S</span>
-                            <span class="friend-name">Sawanya</span>
-                        </a>
-                    </div>
-                </div>
-            </section>
+            <nav aria-labelledby="friends">
+                <h2 id="friends">Friends</h2>
+                <ul>
+                    <li>
+                        <a href="https://raidiizx.github.io"><span>Akatsuki</span></a>
+                    </li>
+                    <li>
+                        <a href="https://armirate.github.io"><span>Armirate</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.warayut.xyz"><span>Warayut</span></a>
+                    </li>
+                    <li>
+                        <a href="https://shishibaa.github.io/index.html"><span>Sawanya</span></a>
+                    </li>
+                </ul>
+            </nav>
 
-            <section class="contact">
-                <p class="section-label"><span class="dot"></span> say hi</p>
-                <a class="contact-link" href="mailto:chattipoom.siri@gmail.com">chattipoom.siri@gmail.com</a>
+            <section aria-labelledby="say-hi">
+                <h2 id="say-hi">Say Hi</h2>
+                <address>
+                    <a href="mailto:chattipoom.siri@gmail.com"><span>chattipoom.siri@gmail.com</span></a>
+                </address>
             </section>
         </main>
 
         <footer>
-            <p id="footer-date"></p>
-            <div>~ 🌸 ~</div>
+            <p>~ 🌸 ~</p>
+            <p class="credit">
+                Banner art by <a href="https://waneella.com">waneella</a> · Updated
+                <time datetime="2026-08">August 2026</time>
+            </p>
         </footer>
 
         <script src="js/index.js"></script>
